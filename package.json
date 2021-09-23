@@ -1,10 +1,17 @@
 {
   "name": "insomnia-plugin-request-body-sha-512",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "insomnia": {
     "name": "request-body-sha-512",
     "description": "tag for the sha512 value of the request body"
   },
-  "main": "main.js"
+  "main": "main.js",
+  "author": "thevoscache",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/theVosCache/insomnia-body-request-sha512/issues"
+  },
+  "homepage": "https://gitlab.com/theVosCache/insomnia-body-request-sha512#readme",
+  "description": ""
 }
