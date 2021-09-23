@@ -1,31 +1,37 @@
 const crypto = require('crypto');
 
-const replacementContent = 'Will be replaced with HMAC of request body';
 const settings = {
-  salt: ''
+  salt: '',
+  encoding: '',
 };
 
 function sha512(content) {
-  const hash = crypto.createHash('sha512');
+  const hash = crypto.createHash(settings.encoding);
   hash.update(content, 'utf8');
   return hash.digest('hex');
 }
 
 module.exports.templateTags = [{
-  name: 'requestbodysha512',
-  displayName: 'Request body sha512',
-  description: 'sha512 of the request body',
+  name: 'requestbodyhash',
+  displayName: 'Request body hash',
+  description: 'crete hash of the request body',
   args: [
     {
-      displayName: 'salt',
+      displayName: 'Encoding',
+      type: 'string',
+      placeholder: 'sha512'
+    },
+    {
+      displayName: 'Salt',
       type: 'string',
       placeholder: 'salt'
     }
   ],
-  async run(context, salt = '') {
+  async run(context, encoding ='', salt = '') {
+    settings.encoding = encoding
     settings.salt = salt
+
     let request = await context.util.models.request.getById(context.meta.requestId);
-    console.log(request.body.text);
-    return sha512(request.body.text+salt);
+    return sha512(request.body.text+settings.salt);
   }
 }];

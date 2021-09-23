@@ -1,10 +1,10 @@
 {
-  "name": "insomnia-plugin-request-body-sha-512",
-  "version": "0.0.1",
+  "name": "insomnia-plugin-request-body-hash",
+  "version": "0.0.2",
   "private": false,
   "insomnia": {
-    "name": "request-body-sha-512",
-    "description": "tag for the sha512 value of the request body"
+    "name": "request-body-hash",
+    "description": "tag for the hash value of the request body"
   },
   "main": "main.js",
   "author": "thevoscache",
